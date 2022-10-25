@@ -4,40 +4,47 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Search model -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search model end -->
-
     <!-- Header Section Begin -->
     <header class="header-section">
         <div class="container-fluid">
             <div class="inner-header">
                 <div class="logo">
-                    <a href="./index.html"><img src="<?= base_url('asset/violet-master/') ?>img/logo.png" alt=""></a>
+                    <h3>AGUNG JAYA</h3>
                 </div>
                 <div class="header-right">
-                    <img src="<?= base_url('asset/violet-master/') ?>img/icons/search.png" alt="" class="search-trigger">
-                    <img src="<?= base_url('asset/violet-master/') ?>img/icons/man.png" alt="">
-                    <a href="<?= base_url('Pelanggan/cKeranjang') ?>">
-                        <img src="<?= base_url('asset/violet-master/') ?>img/icons/bag.png" alt="">
-                        <span><?= $cart['jml']->jml ?></span>
-                    </a>
+                    <?php
+                    if ($this->session->userdata('id') != '') {
+                        if ($cart['jml']->jml != 0) {
+                    ?>
+                            <img src="<?= base_url('asset/violet-master/') ?>img/icons/man.png" alt="">
+                            <a href="<?= base_url('Pelanggan/cKeranjang') ?>">
+                                <img src="<?= base_url('asset/violet-master/') ?>img/icons/bag.png" alt="">
+                                <span><?= $cart['jml']->jml ?></span>
+                            </a>
+                    <?php
+                        }
+                    }
+                    ?>
                 </div>
                 <div class="user-access">
-                    <a href="#">Register</a>
-                    <a href="#" class="in">Sign in</a>
+                    <?php
+                    if ($this->session->userdata('id') == '') {
+                    ?>
+                        <a href="<?= base_url('Pelanggan/cAuth') ?>">Login</a>
+                    <?php
+                    } else {
+                    ?>
+                        <a href="<?= base_url('Pelanggan/cAuth/logout') ?>"> Logout</a>
+                    <?php
+                    }
+                    ?>
+
+
                 </div>
                 <nav class="main-menu mobile-menu">
                     <ul>
                         <li><a class="active" href="<?= base_url('Pelanggan/cHome') ?>">Home</a></li>
-                        <li><a href="<?= base_url('Pelanggan/cAbout')  ?>">About</a></li>
+                        <!-- <li><a href="<?= base_url('Pelanggan/cAbout')  ?>">About</a></li> -->
                         <li><a href="<?= base_url('Pelanggan/cPesananSaya') ?>">Pesanan Saya</a></li>
                     </ul>
                 </nav>
@@ -63,7 +70,13 @@
                 <div class="col-md-4 text-left text-xl-right">
                     <div class="header-item">
                         <img src="img/icons/sales.png" alt="">
-                        <p>Selamat Datang</p>
+                        <?php
+                        if ($this->session->userdata('id') != '') {
+                        ?>
+                            <p>Selamat Datang, <?= $this->session->userdata('nama') ?></p>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

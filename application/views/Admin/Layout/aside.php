@@ -116,6 +116,64 @@
 						<p>Selesai</p>
 					</a>
 				</li>
+				<li class="nav-header">TRANSAKSI LANGSUNG</li>
+				<li class="nav-item">
+					<a href="<?= base_url('Admin/cTransaksiLangsung') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cTransaksiLangsung') {
+																								echo 'active';
+																							}  ?>">
+						<i class="nav-icon fas fa-shopping-cart"></i>
+						<p>
+							Transaksi
+						</p>
+					</a>
+				</li>
+				<li class="nav-header">ANALISIS </li>
+				<li class="nav-item has-treeview <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cAnalisis') {
+														echo 'menu-open';
+													}  ?>">
+					<a href="#" class="nav-link <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cAnalisis') {
+													echo 'active';
+												}  ?>">
+						<i class="nav-icon fas fa-tachometer-alt"></i>
+						<p>
+							Laporan Analisis
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('Admin/cAnalisis/analisis_jk') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cAnalisis' && $this->uri->segment(3) == 'analisis_jk') {
+																											echo 'active';
+																										}  ?>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Jenis Kelamin Pelanggan</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('Admin/cAnalisis/analisis_alamat') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cAnalisis' && $this->uri->segment(3) == 'analisis_alamat') {
+																												echo 'active';
+																											}  ?>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Alamat Pengiriman</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('Admin/cAnalisis/analisis_penjualan') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cAnalisis' && $this->uri->segment(3) == 'analisis_penjualan') {
+																												echo 'active';
+																											}  ?>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Penjualan</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-header">LOGOUT </li>
+				<li class="nav-item">
+					<a href="<?= base_url('cLogin/logout') ?>" class="nav-link">
+						<i class="nav-icon fas fa-sign-out-alt"></i>
+						<p class="text">LogOut</p>
+					</a>
+				</li>
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

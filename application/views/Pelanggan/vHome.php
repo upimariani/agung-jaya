@@ -1,34 +1,12 @@
 <!-- Hero Slider Begin -->
 <section class="hero-slider">
     <div class="hero-items owl-carousel">
-        <div class="single-slider-item set-bg" data-setbg="<?= base_url('asset/violet-master/') ?>img/slider-1.jpg">
+        <div class="single-slider-item set-bg" data-setbg="<?= base_url('asset/violet-master/') ?>img/1.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>2019</h1>
-                        <h2>Lookbook.</h2>
-                        <a href="#" class="primary-btn">See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-slider-item set-bg" data-setbg="<?= base_url('asset/violet-master/') ?>img/slider-2.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>2019</h1>
-                        <h2>Lookbook.</h2>
-                        <a href="#" class="primary-btn">See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-slider-item set-bg" data-setbg="<?= base_url('asset/violet-master/') ?>img/slider-3.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>2019</h1>
-                        <h2>Lookbook.</h2>
+                        <h1>Toko</h1>
+                        <h2>Agung Jaya Plastik</h2>
                         <a href="#" class="primary-btn">See More</a>
                     </div>
                 </div>
@@ -92,11 +70,26 @@
                         <div class="single-product-item">
                             <figure>
                                 <a href="#"><img style="width: 150px; height: 320px;" src="<?= base_url('asset/foto-produk/' . $value->gambar) ?>" alt=""></a>
-                                <div class="p-status">new</div>
+                                <?php
+                                if ($value->disc != 0) {
+                                ?>
+                                    <div class="p-status">Sale! <?= $value->disc ?> %</div>
+                                <?php
+                                }
+                                ?>
+
                             </figure>
                             <div class="product-text">
                                 <h6><?= $value->name_prod ?></h6>
-                                <p>Rp. <?= number_format($value->price_prod - ($value->disc / 100 * $value->price_prod)) ?></p>
+                                <p>Rp. <?= number_format($value->price_prod - ($value->disc / 100 * $value->price_prod)) ?>
+                                    <?php
+                                    if ($value->disc != 0) {
+                                    ?>
+                                        <del>Rp. <?= number_format($value->price_prod) ?></del>
+                                    <?php
+                                    }
+                                    ?>
+                                </p>
                                 <button type="submit" class="primary-btn look-btn"> <img src="<?= base_url('asset/violet-master/') ?>img/icons/bag.png" alt=""></button>
                             </div>
                         </div>
@@ -118,7 +111,7 @@
             <div class="col-lg-4 offset-lg-1">
                 <div class="lookbok-left">
                     <div class="section-title">
-                        <h2>2019 <br />#lookbook</h2>
+                        <h2>2022 <br />#foodandhealty</h2>
                     </div>
                     <p>Fusce urna quam, euismod sit amet mollis quis, vestibulum quis velit. Vestibulum malesuada
                         aliquet libero viverra cursus. Aliquam erat volutpat. Morbi id dictum quam, ut commodo
@@ -132,8 +125,8 @@
             </div>
             <div class="col-lg-5 offset-lg-1">
                 <div class="lookbok-pic">
-                    <img src="<?= base_url('asset/violet-master/') ?>img/lookbok.jpg" alt="">
-                    <div class="pic-text">fashion</div>
+                    <img src="<?= base_url('asset/violet-master/') ?>img/2.jpg" alt="">
+                    <div class="pic-text">Food</div>
                 </div>
             </div>
         </div>

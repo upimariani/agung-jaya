@@ -10,6 +10,7 @@
             <div class="col-lg-8">
                 <img src="img/add.jpg" alt="">
             </div>
+
         </div>
     </div>
 </section>
@@ -34,15 +35,7 @@
                             <p class="in-name">Nama</p>
                         </div>
                         <div class="col-lg-10">
-                            <input type="text" placeholder="First Name">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2">
-                            <p class="in-name">No Telepon</p>
-                        </div>
-                        <div class="col-lg-10">
-                            <input type="text">
+                            <input type="text" value="<?= $this->session->userdata('nama') ?>" placeholder="First Name" readonly>
                         </div>
                     </div>
                     <div class="row">
@@ -84,7 +77,6 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="order-table">
-
                         <div class="cart-item">
                             <span>Subtotal</span>
                             <p class="subtotal"></p>
@@ -93,7 +85,6 @@
                             <span>Shipping</span>
                             <p class="ongkir"></p>
                         </div>
-
                         <div class="cart-total">
                             <span>Total</span>
                             <p class="total"></p>

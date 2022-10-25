@@ -2,17 +2,24 @@
 <section class="page-add cart-page-add">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-8">
                 <div class="page-breadcrumb">
                     <h2>Cart<span>.</span></h2>
                     <a href="#">Home</a>
                     <a href="#">Dresses</a>
                     <a class="active" href="#">Night Dresses</a>
                 </div>
+                <br>
+
+
+                <h4 class="text-danger">Minimal Pembelian dengan Total Rp. 100.000</h4>
+
+
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-4">
                 <img src="img/add.jpg" alt="">
             </div>
+
         </div>
     </div>
 </section>
@@ -21,6 +28,7 @@
 <!-- Cart Page Section Begin -->
 <div class="cart-page">
     <form action="<?= base_url('pelanggan/cKeranjang/updateCart') ?>" method="POST">
+
         <div class="container">
             <div class="cart-table">
                 <table>
@@ -36,7 +44,9 @@
                     <tbody>
                         <?php
                         $i = 1;
+                        $tot = 0;
                         foreach ($cart['cart'] as $key => $value) {
+                            $tot += $value->qty_cart * ($value->price_prod - ($value->disc / 100 * $value->price_prod));
                         ?>
                             <tr>
                                 <td class="product-col">
@@ -68,7 +78,18 @@
                         </div>
                     </div>
                     <div class="col-lg-5 offset-lg-1 text-left text-lg-right">
-                        <a href="<?= base_url('pelanggan/cCheckout') ?>" class="site-btn clear-btn">Checkout</a>
+                        <?php
+                        if ($tot < 100000) {
+                        ?>
+                            <a href="#" class="site-btn clear-btn">Checkout </a>
+                        <?php
+                        } else {
+                        ?>
+                            <a href="<?= base_url('pelanggan/cCheckout') ?>" class="site-btn clear-btn">Checkout </a>
+                        <?php
+                        }
+                        ?>
+
                         <button type="submit" class="site-btn update-btn">Update Cart</button>
                     </div>
                 </div>

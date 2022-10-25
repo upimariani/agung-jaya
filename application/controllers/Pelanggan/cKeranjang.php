@@ -13,6 +13,7 @@ class cKeranjang extends CI_Controller
 
     public function index()
     {
+        $this->protect->protect();
         $data = array(
             'cart' => $this->mKeranjang->selectCart()
         );
@@ -23,11 +24,13 @@ class cKeranjang extends CI_Controller
     }
     public function deleteCart($id)
     {
+        $this->protect->protect();
         $this->mKeranjang->delete($id);
         redirect('pelanggan/cKeranjang');
     }
     public function updateCart()
     {
+        $this->protect->protect();
         $cart = $this->mKeranjang->selectCart();
         $i = 1;
         foreach ($cart['cart'] as $key => $value) {

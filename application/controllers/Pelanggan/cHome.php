@@ -25,6 +25,7 @@ class cHome extends CI_Controller
     }
     public function add()
     {
+        $this->protect->protect();
         $cek = $this->input->post('id_produk');
         $produk_cek = $this->mKeranjang->cek_cart($cek);
         if ($produk_cek) {
@@ -35,6 +36,7 @@ class cHome extends CI_Controller
         } else {
             $data = array(
                 'id_produk' => $this->input->post('id_produk'),
+                'id_cust' => $this->session->userdata('id'),
                 'qty_cart' => '1'
             );
             $this->mKeranjang->insertCart($data);

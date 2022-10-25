@@ -11,6 +11,7 @@ class cPesananSaya extends CI_Controller
     }
     public function index()
     {
+        $this->protect->protect();
         $data = array(
             'cart' => $this->mKeranjang->selectCart(),
             'pesanan' => $this->mPesananSaya->pesananSaya()
@@ -59,6 +60,14 @@ class cPesananSaya extends CI_Controller
 
             redirect('Pelanggan/cPesananSaya');
         }
+    }
+    public function pesananDiterima($id)
+    {
+        $data = array(
+            'status_order' => '4'
+        );
+        $this->mPesananSaya->bayar($id, $data);
+        redirect('Pelanggan/cPesananSaya');
     }
 }
 

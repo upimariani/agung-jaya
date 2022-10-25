@@ -63,7 +63,7 @@
 										<tr>
 											<td><?= $no++ ?></td>
 											<td><?= $value->nama_kecamatan ?></td>
-											<td><?= $value->ongkir ?></td>
+											<td>Rp. <?= number_format($value->ongkir)  ?></td>
 											<td class="text-center">
 												<div class="btn-group">
 													<button type="button" data-toggle="modal" data-target="#edit<?= $value->id_kecamatan ?>" class="btn btn-warning">Edit</button>

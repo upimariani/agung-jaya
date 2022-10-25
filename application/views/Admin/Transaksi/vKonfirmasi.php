@@ -53,6 +53,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                    $no = 1;
+                                    foreach ($transaksi['menunggu_konfirmasi'] as $key => $value) {
+                                    ?>
+                                        <tr>
+                                            <td><?= $no++ ?></td>
+                                            <td><?= $value->id_order  ?></td>
+                                            <td><?= $value->tgl_order  ?></td>
+                                            <td>Rp. <?= number_format($value->total_order)   ?></td>
+                                            <td><span class="badge badge-warning">Menunggu Konfirmasi</span></td>
+                                            <td class="text-center">
+                                                <a href="<?= base_url('Admin/cDetailTransaksi/detail/' . $value->id_order) ?>" class="btn btn-app">
+                                                    <i class="fas fa-inbox"></i>Detail Orders
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
 
                                 </tbody>
                                 <tfoot>
