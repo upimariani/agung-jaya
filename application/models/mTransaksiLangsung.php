@@ -3,10 +3,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class mTransaksiLangsung extends CI_Model
 {
+    public function add_member($data)
+    {
+        $this->db->insert('pelanggan', $data);
+    }
+    public function member()
+    {
+        $this->db->select('*');
+        $this->db->from('pelanggan');
+        return $this->db->get()->result();
+    }
     public function transaksaksilangsung()
     {
         $this->db->select('*');
         $this->db->from('my_order');
+        $this->db->join('pelanggan', 'my_order.id_cust = pelanggan.id_cust', 'left');
+
         $this->db->where('type_order=2');
 
         return $this->db->get()->result();

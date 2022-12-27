@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Okt 2022 pada 00.02
+-- Waktu pembuatan: 01 Nov 2022 pada 03.03
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -55,25 +55,26 @@ CREATE TABLE `diskon` (
   `id_admin` int(11) NOT NULL,
   `name_disc` varchar(30) DEFAULT NULL,
   `disc` varchar(15) DEFAULT '0',
-  `tgl_end` varchar(15) DEFAULT NULL
+  `tgl_end` varchar(15) DEFAULT NULL,
+  `tgl_start` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `diskon`
 --
 
-INSERT INTO `diskon` (`id_disc`, `id_produk`, `id_admin`, `name_disc`, `disc`, `tgl_end`) VALUES
-(1, 'jibrO', 0, NULL, '0', NULL),
-(2, 'ObPu7', 0, NULL, '0', NULL),
-(3, 'duBaw', 0, NULL, '0', NULL),
-(4, 'gShp7', 0, NULL, '0', NULL),
-(5, 'IJNOv', 0, NULL, '0', NULL),
-(6, 'l1Az5', 0, NULL, '0', NULL),
-(7, 'vBu1O', 0, NULL, '0', NULL),
-(8, 'cry4N', 0, NULL, '0', NULL),
-(9, 'uaXPU', 0, NULL, '0', NULL),
-(10, 'gjLG4', 0, NULL, '0', NULL),
-(11, 'VLpMj', 0, NULL, '0', NULL);
+INSERT INTO `diskon` (`id_disc`, `id_produk`, `id_admin`, `name_disc`, `disc`, `tgl_end`, `tgl_start`) VALUES
+(1, 'jibrO', 0, NULL, '0', NULL, NULL),
+(2, 'ObPu7', 0, '0', '0', '0', '0'),
+(3, 'duBaw', 0, 'Sale Of Day', '5', '2022-11-24', '2022-11-01'),
+(4, 'gShp7', 0, NULL, '0', NULL, NULL),
+(5, 'IJNOv', 0, NULL, '0', NULL, NULL),
+(6, 'l1Az5', 0, NULL, '0', NULL, NULL),
+(7, 'vBu1O', 0, NULL, '0', NULL, NULL),
+(8, 'cry4N', 0, NULL, '0', NULL, NULL),
+(9, 'uaXPU', 0, NULL, '0', NULL, NULL),
+(10, 'gjLG4', 0, NULL, '0', NULL, NULL),
+(11, 'VLpMj', 0, NULL, '0', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -126,6 +127,13 @@ CREATE TABLE `keranjang` (
   `id_cust` int(11) NOT NULL,
   `qty_cart` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `keranjang`
+--
+
+INSERT INTO `keranjang` (`id_cart`, `id_produk`, `id_cust`, `qty_cart`) VALUES
+(9, 'ObPu7', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -367,7 +375,7 @@ ALTER TABLE `kecamatan`
 -- AUTO_INCREMENT untuk tabel `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `pelanggan`

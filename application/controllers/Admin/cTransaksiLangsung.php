@@ -14,7 +14,8 @@ class cTransaksiLangsung extends CI_Controller
     public function index()
     {
         $data = array(
-            'transaksi' => $this->mTransaksiLangsung->transaksaksilangsung()
+            'transaksi' => $this->mTransaksiLangsung->transaksaksilangsung(),
+            'member' => $this->mTransaksiLangsung->member()
         );
         $this->load->view('Admin/Layout/head');
         $this->load->view('Admin/Layout/aside');
@@ -31,17 +32,38 @@ class cTransaksiLangsung extends CI_Controller
         $this->load->view('Admin/TransaksiLangsung/vDetailTransaksiLangsung', $data);
         $this->load->view('Admin/Layout/footer');
     }
-    public function create()
+    public function add_member()
     {
         $data = array(
-            'produk' => $this->mTransaksiLangsung->produk()
+            'name_cust' => $this->input->post('nama'),
+            'address_cust' => $this->input->post('alamat'),
+            'no_phone' => $this->input->post('no_telepon'),
+            'jk' => $this->input->post('jk'),
+            'member' => '1'
+        );
+        $this->mTransaksiLangsung->add_member($data);
+        $this->session->set_flashdata('success', 'Member Berhasil Ditambahkan!!!');
+
+        $data = $this->db->query("SELECT MAX(id_cust) as id FROM pelanggan")->row();
+        redirect('Admin/cTransaksiLangsung/create/' . $data->id);
+    }
+    public function show_member()
+    {
+        $id = $this->input->post('member');
+        redirect('Admin/cTransaksiLangsung/create/' . $id);
+    }
+    public function create($id)
+    {
+        $data = array(
+            'produk' => $this->mTransaksiLangsung->produk(),
+            'id' => $id
         );
         $this->load->view('Admin/Layout/head');
         $this->load->view('Admin/Layout/aside');
         $this->load->view('Admin/TransaksiLangsung/vCreateTranLangsung', $data);
         $this->load->view('Admin/Layout/footer');
     }
-    public function add_to_cart()
+    public function add_to_cart($id)
     {
         $data = array(
             'id' => $this->input->post('produk'),
@@ -51,7 +73,7 @@ class cTransaksiLangsung extends CI_Controller
             'stok'  => $this->input->post('stok'),
         );
         $this->cart->insert($data);
-        redirect('Admin/cTransaksiLangsung/create');
+        redirect('Admin/cTransaksiLangsung/create/' . $id);
     }
     public function cart_delete($id)
     {
@@ -60,9 +82,11 @@ class cTransaksiLangsung extends CI_Controller
     }
     public function selesai()
     {
+        // $id_cust = $this->input->post('id_pelanggan');
+        // var_dump($id_cust);
         $data_transaksi = array(
+            'id_cust' => $this->input->post('id_pelanggan'),
             'id_order' => $this->input->post('id_transaksi'),
-            'id_cust' => '0',
             'tgl_order' => date('Y-m-d'),
             'total_order' => $this->cart->total(),
             'type_order' => '2',

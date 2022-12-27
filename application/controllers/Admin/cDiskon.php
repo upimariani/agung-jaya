@@ -41,7 +41,8 @@ class cDiskon extends CI_Controller
 			$data = array(
 				'name_disc' => $this->input->post('nama'),
 				'disc' => $this->input->post('besar'),
-				'tgl_end' => $this->input->post('tgl')
+				'tgl_end' => $this->input->post('tgl'),
+				'tgl_start' => $this->input->post('tgl_mulai')
 			);
 			$this->mDiskon->insertDiskon($id_produk, $data);
 			$this->session->set_flashdata('success', 'Data Diskon Berhasil Ditambahkan !!!');
@@ -67,7 +68,8 @@ class cDiskon extends CI_Controller
 			$data = array(
 				'name_disc' => $this->input->post('nama'),
 				'disc' => $this->input->post('besar'),
-				'tgl_end' => $this->input->post('tgl')
+				'tgl_end' => $this->input->post('tgl'),
+				'tgl_start' => $this->input->post('tgl_mulai')
 			);
 			$this->mDiskon->insertDiskon($id_produk, $data);
 			$this->session->set_flashdata('success', 'Data Diskon Berhasil Ditambahkan !!!');
@@ -79,7 +81,8 @@ class cDiskon extends CI_Controller
 		$data = array(
 			'name_disc' => '0',
 			'disc' => '0',
-			'tgl_end' => '0'
+			'tgl_end' => '0',
+			'tgl_start' => '0'
 		);
 		$this->mDiskon->insertDiskon($id, $data);
 		$this->session->set_flashdata('success', 'Data Diskon Berhasil Dihapus !!!');

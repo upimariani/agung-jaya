@@ -30,7 +30,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <?php echo form_open('Admin/cTransaksiLangsung/add_to_cart'); ?>
+                        <?php echo form_open('Admin/cTransaksiLangsung/add_to_cart/' . $id); ?>
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Produk</label>
@@ -86,6 +86,7 @@
                                 <?php
                                 $id_transaksi = date('Ymd') . strtoupper(random_string('alnum', 8));
                                 ?>
+                                <input type="hidden" name="id_pelanggan" value="<?= $id ?>">
                                 <input type="hidden" name="id_transaksi" value="<?= $id_transaksi ?>">
                                 <button type="submit" class="btn btn-warning">Selesai</button>
 

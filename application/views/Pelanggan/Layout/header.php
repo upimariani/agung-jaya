@@ -12,11 +12,12 @@
                     <h3>AGUNG JAYA</h3>
                 </div>
                 <div class="header-right">
+
                     <?php
                     if ($this->session->userdata('id') != '') {
                         if ($cart['jml']->jml != 0) {
                     ?>
-                            <img src="<?= base_url('asset/violet-master/') ?>img/icons/man.png" alt="">
+
                             <a href="<?= base_url('Pelanggan/cKeranjang') ?>">
                                 <img src="<?= base_url('asset/violet-master/') ?>img/icons/bag.png" alt="">
                                 <span><?= $cart['jml']->jml ?></span>
@@ -25,6 +26,9 @@
                         }
                     }
                     ?>
+                    <a href="<?= base_url('Pelanggan/cHome/profil_pelanggan') ?>">
+                        <img src="<?= base_url('asset/violet-master/') ?>img/icons/man.png" alt="">
+                    </a>
                 </div>
                 <div class="user-access">
                     <?php

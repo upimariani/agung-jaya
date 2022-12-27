@@ -142,6 +142,14 @@
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
+							<a href="<?= base_url('Admin/cAnalisis/analisis_member') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cAnalisis' && $this->uri->segment(3) == 'analisis_member') {
+																												echo 'active';
+																											}  ?>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Member Pelanggan</p>
+							</a>
+						</li>
+						<li class="nav-item">
 							<a href="<?= base_url('Admin/cAnalisis/analisis_jk') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cAnalisis' && $this->uri->segment(3) == 'analisis_jk') {
 																											echo 'active';
 																										}  ?>">
@@ -155,6 +163,14 @@
 																											}  ?>">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Alamat Pengiriman</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('Admin/cAnalisis/produk_terjual') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cAnalisis' && $this->uri->segment(3) == 'produk_terjual') {
+																											echo 'active';
+																										}  ?>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Produk Terjual</p>
 							</a>
 						</li>
 						<li class="nav-item">

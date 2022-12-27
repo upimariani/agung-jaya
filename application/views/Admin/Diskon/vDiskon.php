@@ -53,6 +53,7 @@
 										<th>Nama Produk</th>
 										<th>Nama Diskon</th>
 										<th>Besar Diskon</th>
+										<th>Tanggal Mulai</th>
 										<th>Tanggal Selesai</th>
 										<th class="text-center">Action</th>
 									</tr>
@@ -67,6 +68,7 @@
 											<td><?= $value->name_prod ?></td>
 											<td><?= $value->name_disc ?></td>
 											<td><?= $value->disc ?> %</td>
+											<td><?= $value->tgl_start ?></td>
 											<td><?= $value->tgl_end ?></td>
 											<td class="text-center">
 												<div class="btn-group">

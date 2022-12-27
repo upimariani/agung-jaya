@@ -5,12 +5,12 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="m-0 text-dark">Analisis Penjualan Sesuai Alamat Pengiriman</h1>
+					<h1 class="m-0 text-dark">Analisis Produk Terjual</h1>
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Laporan Penjualan</li>
+						<li class="breadcrumb-item active">Laporan Produk Terjual</li>
 					</ol>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
@@ -23,7 +23,7 @@
 
 			<div class="row">
 				<div class="col-12 table-responsive">
-					<canvas id="grafik_alamat" height="100"></canvas>
+					<canvas id="grafik_produk" height="100"></canvas>
 
 
 				</div>
