@@ -14,10 +14,19 @@ class cHome extends CI_Controller
 
 	public function index()
 	{
+		$tgl = date('Y-m-d', strtotime($this->session->userdata('tgl')));
+		$birthDate = (new DateTime($tgl));
+		$today = new DateTime("today");
+
+		$y = $today->diff($birthDate)->y;
+		$m = $today->diff($birthDate)->m;
+		$d = $today->diff($birthDate)->d;
 		$data = array(
 			'produk' => $this->mHome->select_produk(),
 			'cart' => $this->mKeranjang->selectCart(),
-			'best' => $this->mHome->best_produk()
+			'best' => $this->mHome->best_produk(),
+			'old' => $y,
+			'umur' => $this->mHome->produk_umur($y)
 		);
 		$this->load->view('Pelanggan/Layout/head');
 		$this->load->view('Pelanggan/Layout/header', $data);

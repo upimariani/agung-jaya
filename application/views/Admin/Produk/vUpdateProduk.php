@@ -73,6 +73,22 @@
                                 <img style="width: 120px;" src="<?= base_url('Asset/foto-produk/' . $produk->gambar) ?>">
                                 <input type="file" name="gambar" class="form-control" id="exampleInputEmail1" placeholder="Enter Gambar">
                             </div>
+                            <hr>
+                            <h5>Analisis Profiling Pelanggan Berdasarkan Umur</h5>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Range Awal Umur</label>
+                                        <input type="number" value="<?= $produk->target_awal ?>" name="awal" class="form-control" id="exampleInputEmail1" placeholder="Enter Range Awal" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Range Akhir Umur</label>
+                                        <input type="number" value="<?= $produk->target_akhir ?>" name="akhir" class="form-control" id="exampleInputEmail1" placeholder="Enter Range Akhir" required>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- /.card-body -->
 

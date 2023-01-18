@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Nov 2022 pada 03.03
+-- Waktu pembuatan: 18 Jan 2023 pada 23.37
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -74,7 +74,8 @@ INSERT INTO `diskon` (`id_disc`, `id_produk`, `id_admin`, `name_disc`, `disc`, `
 (8, 'cry4N', 0, NULL, '0', NULL, NULL),
 (9, 'uaXPU', 0, NULL, '0', NULL, NULL),
 (10, 'gjLG4', 0, NULL, '0', NULL, NULL),
-(11, 'VLpMj', 0, NULL, '0', NULL, NULL);
+(11, 'VLpMj', 0, NULL, '0', NULL, NULL),
+(12, 'VGhAy', 0, NULL, '0', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -177,17 +178,19 @@ CREATE TABLE `pelanggan` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `member` int(11) NOT NULL,
-  `create_member` timestamp NOT NULL DEFAULT current_timestamp()
+  `create_member` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ttl` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `pelanggan`
 --
 
-INSERT INTO `pelanggan` (`id_cust`, `name_cust`, `address_cust`, `no_phone`, `jk`, `username`, `password`, `member`, `create_member`) VALUES
-(1, 'Zahra', 'Kuningan Jawa Barat', '08976788777', 'Perempuan', 'pelanggan', 'pelanggan', 0, '2022-08-20 13:29:21'),
-(2, 'Zaenal', 'Kuningan', '08976788777', 'Laki - Laki', 'pelanggan1', 'pelanggan2', 0, '2022-08-21 10:04:16'),
-(3, 'coba', 'LINK.KRAMAT JAYA RT/RW 007/003', '085156727368', 'Perempuan', 'admin', 'coba', 0, '2022-08-22 12:15:04');
+INSERT INTO `pelanggan` (`id_cust`, `name_cust`, `address_cust`, `no_phone`, `jk`, `username`, `password`, `member`, `create_member`, `ttl`) VALUES
+(1, 'Zahra', 'Kuningan Jawa Barat', '08976788777', 'Perempuan', 'pelanggan', 'pelanggan', 0, '2022-08-20 13:29:21', ''),
+(2, 'Zaenal', 'Kuningan', '08976788777', 'Laki - Laki', 'pelanggan1', 'pelanggan2', 0, '2022-08-21 10:04:16', ''),
+(3, 'coba', 'LINK.KRAMAT JAYA RT/RW 007/003', '085156727368', 'Perempuan', 'admin', 'coba', 0, '2022-08-22 12:15:04', ''),
+(4, 'Naya', 'Kuningan', '089876567654', 'Perempuan', 'naya', 'naya', 0, '2023-01-18 06:42:39', '1999-02-18');
 
 -- --------------------------------------------------------
 
@@ -226,25 +229,28 @@ CREATE TABLE `produk` (
   `ket_prod` text NOT NULL,
   `price_prod` varchar(15) NOT NULL,
   `stok_prod` int(11) NOT NULL,
-  `gambar` text NOT NULL
+  `gambar` text NOT NULL,
+  `target_awal` int(11) NOT NULL,
+  `target_akhir` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `id_category`, `name_prod`, `ket_prod`, `price_prod`, `stok_prod`, `gambar`) VALUES
-('cry4N', 1, 'Malkist Kopyor', 'Bngks', '5000', 99, '311.jpg'),
-('duBaw', 1, 'Swalow', 'Bngks', '5000', 95, '3.jpg'),
-('gjLG4', 1, 'Friench Fries', 'Bngks', '6000', 30, '50.jpg'),
-('gShp7', 1, 'Hello Panda', 'Bngks', '1000', 147, '19.jpg'),
-('IJNOv', 1, 'Taro Net', 'Bngks', '4500', 100, '24.jpg'),
-('jibrO', 1, 'Palmia Mentega', 'Bngks', '15000', 25, '2.jpg'),
-('l1Az5', 1, 'Energen Vanila', 'Pak', '19000', 46, '22.jpg'),
-('ObPu7', 1, 'Biskuit Regal', 'Bngks', '22000', 46, '20.jpg'),
-('uaXPU', 1, 'Sosis Champ', 'Bngks', '15000', 100, '32.jpg'),
-('vBu1O', 1, 'Pota Bee', 'Bngks', '2300', 100, '13.jpg'),
-('VLpMj', 1, 'Kopi Freshko', 'Bngks', '1000', 100, '35.jpg');
+INSERT INTO `produk` (`id_produk`, `id_category`, `name_prod`, `ket_prod`, `price_prod`, `stok_prod`, `gambar`, `target_awal`, `target_akhir`) VALUES
+('cry4N', 1, 'Malkist Kopyor', 'Bngks', '5000', 99, '311.jpg', 20, 50),
+('duBaw', 1, 'Swalow', 'Bngks', '5000', 95, '3.jpg', 20, 50),
+('gjLG4', 1, 'Friench Fries', 'Bngks', '6000', 30, '50.jpg', 10, 50),
+('gShp7', 1, 'Hello Panda', 'Bngks', '1000', 147, '19.jpg', 10, 50),
+('IJNOv', 1, 'Taro Net', 'Bngks', '4500', 100, '24.jpg', 20, 50),
+('jibrO', 1, 'Palmia Mentega', 'Bngks', '15000', 25, '2.jpg', 30, 50),
+('l1Az5', 1, 'Energen Vanila', 'Pak', '19000', 46, '22.jpg', 20, 50),
+('ObPu7', 1, 'Biskuit Regal', 'Bngks', '22000', 46, '20.jpg', 20, 50),
+('uaXPU', 1, 'Sosis Champ', 'Bngks', '15000', 100, '32.jpg', 15, 50),
+('vBu1O', 1, 'Pota Bee', 'Bngks', '2300', 100, '13.jpg', 20, 50),
+('VGhAy', 1, 'ccc', 'Bngks', '10000', 100, '34.jpg', 20, 50),
+('VLpMj', 1, 'Kopi Freshko', 'Bngks', '1000', 100, '35.jpg', 25, 50);
 
 -- --------------------------------------------------------
 
@@ -357,7 +363,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `diskon`
 --
 ALTER TABLE `diskon`
-  MODIFY `id_disc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_disc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`
@@ -381,7 +387,7 @@ ALTER TABLE `keranjang`
 -- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_cust` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cust` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengiriman`

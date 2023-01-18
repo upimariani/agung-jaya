@@ -75,10 +75,12 @@
                     <div class="header-item">
                         <img src="img/icons/sales.png" alt="">
                         <?php
+
                         if ($this->session->userdata('id') != '') {
                         ?>
-                            <p>Selamat Datang, <?= $this->session->userdata('nama') ?></p>
+                            <p>Selamat Datang, <?= $this->session->userdata('nama') ?> ,Umur <?= $old ?> thn.</p>
                         <?php
+
                         }
                         ?>
                     </div>

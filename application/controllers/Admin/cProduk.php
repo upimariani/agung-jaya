@@ -29,6 +29,8 @@ class cProduk extends CI_Controller
 		$this->form_validation->set_rules('keterangan', 'Keterangan Produk', 'required');
 		$this->form_validation->set_rules('harga', 'Harga Produk', 'required');
 		$this->form_validation->set_rules('stok', 'Stok Produk', 'required');
+		$this->form_validation->set_rules('awal', 'Range Awal Umur', 'required');
+		$this->form_validation->set_rules('akhir', 'Range Akhir Umur', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$data = array(
@@ -63,7 +65,10 @@ class cProduk extends CI_Controller
 					'ket_prod' => $this->input->post('keterangan'),
 					'price_prod' => $this->input->post('harga'),
 					'stok_prod' => $this->input->post('stok'),
-					'gambar' => $upload_data['file_name']
+					'gambar' => $upload_data['file_name'],
+					'target_awal' => $this->input->post('awal'),
+					'target_akhir' => $this->input->post('akhir'),
+
 				);
 				$this->mProduk->insertProduk($data);
 
@@ -84,6 +89,10 @@ class cProduk extends CI_Controller
 		$this->form_validation->set_rules('keterangan', 'Keterangan Produk', 'required');
 		$this->form_validation->set_rules('harga', 'Harga Produk', 'required');
 		$this->form_validation->set_rules('stok', 'Stok Produk', 'required');
+		$this->form_validation->set_rules('awal', 'Range Awal Umur', 'required');
+		$this->form_validation->set_rules('akhir', 'Range Akhir Umur', 'required');
+
+
 		if ($this->form_validation->run() == TRUE) {
 			$config['upload_path']          = './asset/foto-produk';
 			$config['allowed_types']        = 'gif|jpg|png';
@@ -112,7 +121,9 @@ class cProduk extends CI_Controller
 					'ket_prod' => $this->input->post('keterangan'),
 					'price_prod' => $this->input->post('harga'),
 					'stok_prod' => $this->input->post('stok'),
-					'gambar' => $upload_data['file_name']
+					'gambar' => $upload_data['file_name'],
+					'target_awal' => $this->input->post('awal'),
+					'target_akhir' => $this->input->post('akhir'),
 				);
 				$this->mProduk->updateProduk($id, $data);
 				$this->session->set_flashdata('success', 'Data Produk Berhasil Diperbaharui !!!');

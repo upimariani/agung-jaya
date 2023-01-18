@@ -53,6 +53,7 @@
 										<th>Gambar Produk</th>
 										<th>Nama Produk</th>
 										<th>Keterangan</th>
+										<th>Range Target Umur</th>
 										<th>Harga</th>
 										<th>Stok</th>
 										<th class="text-center">Action</th>
@@ -70,6 +71,7 @@
 												Kategori : <?= $value->name_category ?></td>
 											<td><?= $value->name_prod ?></td>
 											<td><?= $value->ket_prod ?></td>
+											<td><?= $value->target_awal ?> - <?= $value->target_akhir ?> thn</td>
 											<td>Rp. <?= number_format($value->price_prod)  ?></td>
 											<td><?= $value->stok_prod ?></td>
 											<td class="text-center">
@@ -89,6 +91,7 @@
 										<th>Gambar Produk</th>
 										<th>Nama Produk</th>
 										<th>Keterangan</th>
+										<th>Range Target Umur</th>
 										<th>Harga</th>
 										<th>Stok</th>
 										<th class="text-center">Action</th>

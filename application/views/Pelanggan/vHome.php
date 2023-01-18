@@ -95,6 +95,57 @@
 		</div>
 	</div>
 </section>
+<section class="latest-products spad">
+	<div class="container">
+		<div class="col-lg-12 mb-3 text-center">
+			<div class="section-title">
+				<h2>Produk Profiling</h2>
+			</div>
+		</div>
+		<div class="row" id="product-list">
+
+			<?php
+			foreach ($umur as $key => $value) {
+			?>
+				<div class="col-lg-3 col-sm-6">
+					<form action="<?= base_url('Pelanggan/cHome/add') ?>" method="POST">
+						<input type="hidden" name="id_produk" value="<?= $value->id_produk ?>">
+						<input type="hidden" name="qty" value="1">
+						<div class="single-product-item">
+							<figure>
+								<a href="<?= base_url('Pelanggan/chome/detail_produk/' . $value->id_produk) ?>"><img style="width: 150px; height: 320px;" src="<?= base_url('asset/foto-produk/' . $value->gambar) ?>" alt=""></a>
+								<?php
+								if ($value->disc != 0) {
+								?>
+									<div class="p-status">Sale! <?= $value->disc ?> %</div>
+								<?php
+								}
+								?>
+
+							</figure>
+							<div class="product-text">
+								<h6><?= $value->name_prod ?></h6>
+								<p>Rp. <?= number_format($value->price_prod - ($value->disc / 100 * $value->price_prod)) ?>
+									<?php
+									if ($value->disc != 0) {
+									?>
+										<del>Rp. <?= number_format($value->price_prod) ?></del>
+									<?php
+									}
+									?>
+								</p>
+								<button type="submit" class="primary-btn look-btn"> <img src="<?= base_url('asset/violet-master/') ?>img/icons/bag.png" alt=""></button>
+							</div>
+						</div>
+					</form>
+				</div>
+
+			<?php
+			}
+			?>
+		</div>
+	</div>
+</section>
 <!-- Latest Product Begin -->
 <section class="latest-products spad">
 	<div class="container">

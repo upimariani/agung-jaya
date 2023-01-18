@@ -26,9 +26,11 @@ class cAuth extends CI_Controller
             if ($cek) {
                 $id_pelanggan = $cek->id_cust;
                 $nama = $cek->name_cust;
+                $tgl = $cek->ttl;
                 $array = array(
                     'id' => $id_pelanggan,
-                    'nama' => $nama
+                    'nama' => $nama,
+                    'tgl' => $tgl
                 );
 
                 $this->session->set_userdata($array);
@@ -48,6 +50,7 @@ class cAuth extends CI_Controller
         $this->form_validation->set_rules('alamat', 'Alamat Pelanggan', 'required');
         $this->form_validation->set_rules('username', 'Username Pelanggan', 'required');
         $this->form_validation->set_rules('password', 'Password Pelanggan', 'required');
+        $this->form_validation->set_rules('date', 'Tanggal Lahir Pelanggan', 'required');
 
 
         if ($this->form_validation->run() == FALSE) {
@@ -61,7 +64,8 @@ class cAuth extends CI_Controller
                 'no_phone' => $this->input->post('no_hp'),
                 'jk' => $this->input->post('jk'),
                 'username' => $this->input->post('username'),
-                'password' => $this->input->post('password')
+                'password' => $this->input->post('password'),
+                'ttl' => $this->input->post('date')
             );
             $this->db->insert('pelanggan', $data);
             $this->session->set_flashdata('error', 'Anda Berhasil Register');
@@ -75,6 +79,7 @@ class cAuth extends CI_Controller
 
         $this->session->unset_userdata('id');
         $this->session->unset_userdata('nama');
+        $this->session->unset_userdata('tgl');
         $this->session->set_flashdata('error', 'Anda Berhasil Logout!!!');
         redirect('Pelanggan/cAuth');
     }

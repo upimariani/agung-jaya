@@ -38,6 +38,10 @@
                             </select> <?= form_error('alamat', '<p class="text-danger">', '</p>') ?>
                             <input type="text" name="alamat" placeholder="Alamat">
                         </div>
+                        <div class="col-lg-12">
+                            <?= form_error('date', '<p class="text-danger">', '</p>') ?>
+                            <input type="date" class="form-control mb-3" name="date" placeholder="Tanggal Lahir">
+                        </div>
                         <div class="col-lg-6">
                             <?= form_error('username', '<p class="text-danger">', '</p>') ?>
                             <input type="text" name="username" placeholder="Username">

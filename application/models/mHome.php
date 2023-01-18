@@ -33,6 +33,11 @@ class mHome extends CI_Model
 		$this->db->where('id_cust', $id);
 		return $this->db->get()->row();
 	}
+
+	public function produk_umur($umur)
+	{
+		return $this->db->query("SELECT * FROM `produk` JOIN diskon ON diskon.id_produk=produk.id_produk  WHERE target_awal<=" . $umur . " AND target_akhir>=" . $umur . ";")->result();
+	}
 }
 
 /* End of file mHome.php */
