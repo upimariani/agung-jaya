@@ -25,7 +25,7 @@ class cHome extends CI_Controller
 			'produk' => $this->mHome->select_produk(),
 			'cart' => $this->mKeranjang->selectCart(),
 			'best' => $this->mHome->best_produk(),
-			'old' => $y,
+			// 'old' => $y,
 			'umur' => $this->mHome->produk_umur($y)
 		);
 		$this->load->view('Pelanggan/Layout/head');

@@ -75,10 +75,16 @@
                     <div class="header-item">
                         <img src="img/icons/sales.png" alt="">
                         <?php
+                        $tgl = date('Y-m-d', strtotime($this->session->userdata('tgl')));
+                        $birthDate = (new DateTime($tgl));
+                        $today = new DateTime("today");
 
+                        $y = $today->diff($birthDate)->y;
+                        $m = $today->diff($birthDate)->m;
+                        $d = $today->diff($birthDate)->d;
                         if ($this->session->userdata('id') != '') {
                         ?>
-                            <p>Selamat Datang, <?= $this->session->userdata('nama') ?> ,Umur <?= $old ?> thn.</p>
+                            <p>Selamat Datang, <?= $this->session->userdata('nama') ?> ,Umur <?= $y ?> thn.</p>
                         <?php
 
                         }
